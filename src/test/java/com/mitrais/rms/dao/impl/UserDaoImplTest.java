@@ -22,14 +22,14 @@ public class UserDaoImplTest {
             List<User> users = userDao.findAll();
             assertEquals(0, users.size());
 
-            User user = new User(2l, "Esa", "Rijal",
+            User user = new User("esarijal", "Esa", "Rijal",
                     LocalDate.of(1986, 10,21), "esa.rijal@gmail.com");
             userDao.save(user);
 
             users = userDao.findAll();
             assertEquals(1, users.size());
 
-            User withFirstName = userDao.findByFirstName("Esa").orElse(null);
+            User withFirstName = userDao.find("esarijal").orElse(null);
             assertNotNull(withFirstName);
             assert withFirstName!=null;
             assertEquals("esa.rijal@gmail.com", withFirstName.getEmail());

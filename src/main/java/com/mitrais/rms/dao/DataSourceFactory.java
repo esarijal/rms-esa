@@ -8,8 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -24,7 +24,7 @@ public class DataSourceFactory
     {
         MysqlDataSource dataSource = new MysqlDataSource();
         String rootPath =
-                Thread.currentThread().getContextClassLoader().getResource("database.properties").getPath();
+                Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("database.properties")).getPath();
 
         try (InputStream input = new FileInputStream(rootPath)){
             Properties prop = new Properties();

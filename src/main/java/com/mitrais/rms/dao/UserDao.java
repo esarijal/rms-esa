@@ -8,12 +8,7 @@ import java.util.Optional;
 /**
  * Provides interface specific to {@link User} data
  */
-public interface UserDao extends Dao<User, Long>
+public interface UserDao extends Dao<User, String>
 {
-    /**
-     * Find {@link User} by its username
-     * @param firstName username
-     * @return user
-     */
-    Optional<User> findByFirstName(String firstName) throws SQLException;
+
 }

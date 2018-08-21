@@ -4,13 +4,14 @@ import java.time.LocalDate;
 
 
 public class User {
-    private Long userId;
+    private String userId;
     private String firstName;
     private String lastName;
     private LocalDate dob;
     private String email;
+    private String password;
 
-    public User(Long userId, String firstName, String lastName, LocalDate dob, String email) {
+    public User(String userId, String firstName, String lastName, LocalDate dob, String email) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -18,11 +19,11 @@ public class User {
         this.email = email;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -56,6 +57,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUser(String userId) {
         try {
             User user = userDao.find(userId).orElse(null);
-            userDao.delete(user);
+            return userDao.delete(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     public boolean updateUser(User user) {
         try {
             // TODO hash password
-            userDao.update(user);
+            return userDao.update(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     public boolean addUser(User user) {
         try {
             // TODO hash password
-            userDao.save(user);
+            return userDao.save(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }

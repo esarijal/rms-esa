@@ -44,18 +44,19 @@
 
 </nav>
 <div class="container">
+    <span style="color: red">${message}</span>
     <div>
-        <button type="button" class="btn btn-success">Add User</button>
+        <a href="/createUser" role="button" class="btn btn-success">Add User</a>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Date of Birth</th>
-                    <th>E-Mail</th>
-                    <th>Action</th>
-                </tr>
+            <tr>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>E-Mail</th>
+                <th>Action</th>
+            </tr>
             </thead>
             <tbody>
             <c:if test="${userSize == 0}">
@@ -65,19 +66,24 @@
             </c:if>
             <c:if test="${userSize > 0}">
                 <c:forEach items="${users}" var="user">
-                <tr>
-                    <td>${user.userId}</td>
-                    <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
-                    <td>${user.dob}</td>
-                    <td>${user.email}</td>
-                    <td>
-                        <button type="button" class="btn btn-warning">Update</button>
-                        <a href="/deleteUser?userid=${user.userId}" class="btn btn-danger"
-                           role="button">
-                            Delete</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>${user.userId}</td>
+                        <td>${user.firstName}</td>
+                        <td>${user.lastName}</td>
+                        <td>${user.dob}</td>
+                        <td>${user.email}</td>
+                        <td>
+                            <form action="/updateUser" method="get">
+                                <input type="hidden" value="${user.userId}" name="userId">
+                                <button type="submit" class="btn btn-warning">Update</button>
+                            </form>
+                            <br/>
+                            <form action="/deleteUser" method="post">
+                                <input type="hidden" value="${user.userId}" name="userid">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
                 </c:forEach>
             </c:if>
             </tbody>
@@ -90,7 +96,7 @@
             <span style="color: red">${errorMessage}</span>
         </p>
         <%--<form method="post" action="/todo.do">--%>
-            <%--New Todo : <input name="todo" type="text"> <input name="add" type="submit">--%>
+        <%--New Todo : <input name="todo" type="text"> <input name="add" type="submit">--%>
         <%--</form>--%>
     </div>
 </div>

@@ -1,9 +1,10 @@
 package com.mitrais.rms.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
-public class User {
+public class User implements Serializable {
     private String userId;
     private String firstName;
     private String lastName;

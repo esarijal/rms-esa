@@ -16,14 +16,14 @@ public class UserDeleteServlet extends HttpServlet {
     UserService userService = UserServiceImpl.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userid = request.getParameter("userid");
         boolean succeed = userService.deleteUser(userid);
         if(!succeed){
-            request.getSession().setAttribute("message", "Fail deleting message");
+            request.getSession().setAttribute("message", "Fail deleting user");
         }
-        request.getSession().setAttribute("message", "Succeed deleting message");
+        request.getSession().setAttribute("message", "Succeed deleting user");
         response.sendRedirect("/users");
     }
 }

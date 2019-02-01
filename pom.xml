@@ -92,6 +92,7 @@
                     <version>2.2</version>
                     <configuration>
                         <path>/</path>
+                        <port>8181</port>
                         <contextReloadable>true</contextReloadable>
                     </configuration>
                 </plugin>

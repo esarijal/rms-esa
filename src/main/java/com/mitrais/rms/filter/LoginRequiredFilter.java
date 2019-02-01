@@ -16,7 +16,11 @@ public class LoginRequiredFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        if(req.getSession().getAttribute("loggedUserId") != null){
+
+        boolean isStaticResource = ((HttpServletRequest) request).getRequestURI().startsWith("/resources/");
+        boolean isLoggedIn = req.getSession().getAttribute("loggedUserId") != null;
+
+        if(isLoggedIn || isStaticResource){
             filterChain.doFilter(request, response);
         } else {
             req.getRequestDispatcher("/login")

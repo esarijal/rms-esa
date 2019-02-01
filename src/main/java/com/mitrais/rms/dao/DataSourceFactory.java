@@ -23,10 +23,9 @@ public class DataSourceFactory
     DataSourceFactory()
     {
         MysqlDataSource dataSource = new MysqlDataSource();
-        String rootPath =
-                Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("database.properties")).getPath();
 
-        try (InputStream input = new FileInputStream(rootPath)){
+
+        try (InputStream input = getClass().getResourceAsStream("/database.properties")){
             Properties prop = new Properties();
             prop.load(input);
 
